@@ -12,6 +12,15 @@ public class Student {
 
     }
 
+    public Student(String admNumber, String firstname, String lastname, String surname, String schoolEmail, String phoneNumber) {
+        this.admNumber = admNumber;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.surname = surname;
+        this.schoolEmail = schoolEmail;
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getAdmNumber() {
         return admNumber;
     }
