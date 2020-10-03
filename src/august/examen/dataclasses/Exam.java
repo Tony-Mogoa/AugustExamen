@@ -1,41 +1,75 @@
 package august.examen.dataclasses;
 
+import august.examen.db.DatabaseWrapper;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Exam {
-    private int id;
-    private int durationInSeconds;
+    private int examId;
+    private int hours;
+    private int minutes;
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
     private String faculty;
-    private String school;
     private String course;
     private String unit;
     private String examType;
+    private DatabaseWrapper databaseWrapper;
+    public int getExamId() {
+        return examId;
+    }
 
-    public Exam(int id, int durationInSeconds, String faculty, String school, String course, String unit, String examType) {
-        this.id = id;
-        this.durationInSeconds = durationInSeconds;
+    public void setExamId(int examId) {
+        this.examId = examId;
+    }
+
+    public Exam(int examId, int durationInSeconds, String faculty, String course, String unit, String examType, DatabaseWrapper databaseWrapper) {
+        this.examId = examId;
+        this.hours = durationInSeconds;
         this.faculty = faculty;
-        this.school = school;
         this.course = course;
         this.unit = unit;
         this.examType = examType;
+        this.databaseWrapper = databaseWrapper;
     }
 
-    public Exam() {
+    public Exam(DatabaseWrapper databaseWrapper) {
+        this.databaseWrapper = databaseWrapper;
     }
 
-    public int getId() {
-        return id;
+    public boolean addNewExam(){
+        String addSQL = "INSERT INTO exam (exam_faculty, exam_course, exam_unit, exam_type, exam_duration) VALUES (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pstmt = databaseWrapper.getConnection().prepareStatement(addSQL);
+            pstmt.setString(1, faculty);
+            pstmt.setString(2, course);
+            pstmt.setString(3, unit);
+            pstmt.setString(4, examType);
+            pstmt.setInt(5, getDurationInMinutes());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getDurationInMinutes(){
+        return hours * 60 + minutes;
+    }
+    public int getHours() {
+        return hours;
     }
 
-    public int getDurationInSeconds() {
-        return durationInSeconds;
-    }
-
-    public void setDurationInSeconds(int durationInSeconds) {
-        this.durationInSeconds = durationInSeconds;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
     public String getFaculty() {
@@ -44,14 +78,6 @@ public class Exam {
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
     }
 
     public String getCourse() {

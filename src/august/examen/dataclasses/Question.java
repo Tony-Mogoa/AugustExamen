@@ -4,7 +4,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.File;
 
-public class Question extends VBox {
+public class Question{
     private int questionId;
     private int examId;
     private int parentId;

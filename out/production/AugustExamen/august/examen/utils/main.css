@@ -34,7 +34,7 @@
 }
 .textfield {
     -fx-background-color: white;
-    -fx-border-color: #39394D;
+    -fx-border-color: #D9D9D9;
     -fx-background-insets: -0.2, 1, -1.4, 3;
     -fx-border-insets: -0.2, 1, -1.4, 3;
     -fx-background-radius: 1;
