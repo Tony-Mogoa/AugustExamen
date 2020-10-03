@@ -8,12 +8,21 @@ public class Question extends VBox {
     private int questionId;
     private int examId;
     private int parentId;
+    private int order;
     private String content;
     private String label;
     private boolean acceptImages;
     private File[] photosAttached;
     private boolean hasChildren;
     private boolean hasParent;
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
 
     public boolean isAcceptImages() {
         return acceptImages;
