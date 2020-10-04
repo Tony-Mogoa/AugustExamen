@@ -30,6 +30,9 @@ public class AddQuestionsController {
         if(maximized){
             btnMaximize.setText("Minimize");
         }
+        else{
+            btnMaximize.setText("Maximize");
+        }
         stage.setMaximized(maximized);
     }
 }
