@@ -42,11 +42,35 @@
     -fx-padding: 4 7 4 15 ;
     -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
 }
+.textarea{
+    -fx-background-color: white;
+    -fx-border-color: #D9D9D9;
+    -fx-background-insets: 1;
+    -fx-border-insets: 1;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+
+.textarea: focused{
+    -fx-background-color: white;
+    -fx-border-color: #4A91FF;
+    -fx-background-insets: 1;
+    -fx-border-insets: 1;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+
+.textarea .content {
+    -fx-background-color:  white;
+}
+
+.textarea:focused .content {
+    -fx-background-color:  white;
+}
 
 .textfield:focused {
     -fx-border-color : #4A91FF;
     -fx-background-color: white;
     -fx-border-insets: -0.2, 1, -1.4, 3;
+    -fx-background-insets: -0.2, 1, -1.4, 3;
     -fx-background-radius: 1;
     -fx-border-radius: 1;
     -fx-padding: 4 7 4 15 ;

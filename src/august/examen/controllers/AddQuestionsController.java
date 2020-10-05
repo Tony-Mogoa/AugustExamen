@@ -1,11 +1,17 @@
 package august.examen.controllers;
 
+import august.examen.utils.AugustScene;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 public class AddQuestionsController {
     public Button btnClose;
@@ -20,8 +26,14 @@ public class AddQuestionsController {
 
     public void openAddDialog(ActionEvent actionEvent) {
         Stage stage = new Stage();
-        stage.setScene(new Scene(new VBox()));
-        stage.show();
+        stage.initStyle(StageStyle.UNDECORATED);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/august/examen/views/newQuestionDialog.fxml"));
+            stage.setScene(new AugustScene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void maximize(ActionEvent actionEvent) {
