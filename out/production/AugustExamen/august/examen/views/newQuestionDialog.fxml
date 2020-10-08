@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="600.0" style="-fx-border-color: #029BDE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="august.examen.controllers.NewQuestionDialogController">
    <children>
       <AnchorPane prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #029BDE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,18 +20,18 @@
             <Button fx:id="btnClose" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#closeWindow" styleClass="btn-danger" stylesheets="@../utils/main.css" text="Cancel" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="3.0" />
          </children>
       </AnchorPane>
-      <TextArea layoutX="6.0" layoutY="36.0" prefHeight="308.0" prefWidth="590.0" promptText="Type question here" styleClass="textarea" stylesheets="@../utils/main.css" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+      <TextArea fx:id="txtContent" layoutX="6.0" layoutY="36.0" prefHeight="308.0" prefWidth="590.0" promptText="Type question here" styleClass="textarea" stylesheets="@../utils/main.css" wrapText="true" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
       <Button fx:id="btnAdd" layoutX="542.0" layoutY="357.0" mnemonicParsing="false" onAction="#addQuestion" styleClass="btn-primary" stylesheets="@../utils/main.css" text="Add" AnchorPane.bottomAnchor="16.0" />
-      <CheckBox layoutX="21.0" layoutY="363.0" mnemonicParsing="false" text="Accepts photos" AnchorPane.bottomAnchor="24.0">
+      <CheckBox fx:id="cbxAcceptsPhotos" layoutX="21.0" layoutY="363.0" mnemonicParsing="false" text="Accepts photos" AnchorPane.bottomAnchor="24.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </CheckBox>
-      <TextField layoutX="111.0" layoutY="45.0" prefHeight="27.0" prefWidth="94.0" promptText="e.g. 1, or 1(b)" styleClass="textfield" stylesheets="@../utils/main.css" />
+      <TextField fx:id="txtLabel" layoutX="111.0" layoutY="45.0" prefHeight="27.0" prefWidth="94.0" promptText="e.g. 1, or 1(b)" styleClass="textfield" stylesheets="@../utils/main.css" />
       <Label layoutX="14.0" layoutY="50.0" style="-fx-font-weight: bold;" text="Question label" />
    </children>
 </AnchorPane>

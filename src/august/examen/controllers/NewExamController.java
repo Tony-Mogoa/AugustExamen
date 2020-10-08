@@ -50,8 +50,11 @@ public class NewExamController implements Initializable {
             if(exam.addNewExam()){
                 Stage stage = (Stage) btnCreateExam.getScene().getWindow();
                 try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/august/examen/views/addQuestions.fxml"));
-                    stage.setScene(new AugustScene(root));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/august/examen/views/addQuestions.fxml"));
+                    Parent root = loader.load();
+                    AugustScene scene = new AugustScene(root);
+                    stage.setScene(scene);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
