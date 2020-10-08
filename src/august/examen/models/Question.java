@@ -1,6 +1,4 @@
-package august.examen.dataclasses;
-
-import javafx.scene.layout.VBox;
+package august.examen.models;
 
 import java.io.File;
 

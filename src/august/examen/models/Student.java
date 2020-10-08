@@ -1,4 +1,4 @@
-package august.examen.dataclasses;
+package august.examen.models;
 
 public class Student {
     private String admNumber;

@@ -1,4 +1,4 @@
-package august.examen.dataclasses;
+package august.examen.models;
 
 import august.examen.db.DatabaseWrapper;
 

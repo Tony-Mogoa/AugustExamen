@@ -1,20 +1,17 @@
 package august.examen.controllers;
 
-import august.examen.dataclasses.Exam;
+import august.examen.models.Exam;
 import august.examen.db.DatabaseWrapper;
 import august.examen.utils.AugustScene;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,7 +25,7 @@ public class NewExamController implements Initializable {
     public TextField txtFaculty;
     public TextField txtCourse;
     public TextField txtUnit;
-    public ChoiceBox chbExamType;
+    public ChoiceBox<String> chbExamType;
     public TextField txtHours;
     public TextField txtMinutes;
     public Label lblStatus;
@@ -45,7 +42,7 @@ public class NewExamController implements Initializable {
         else{
             Exam exam = new Exam(new DatabaseWrapper());
             exam.setCourse(txtCourse.getText());
-            exam.setExamType((String) chbExamType.getValue());
+            exam.setExamType(chbExamType.getValue());
             exam.setFaculty(txtHours.getText());
             exam.setUnit(txtUnit.getText());
             exam.setHours(Integer.parseInt(txtHours.getText()));
