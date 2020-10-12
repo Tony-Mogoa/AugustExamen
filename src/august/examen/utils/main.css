@@ -30,7 +30,7 @@
 }
 
 .btn-primary:pressed{
-    -fx-background-color: #0E71EB;
+    -fx-background-color: #112F6D;
 }
 .textfield {
     -fx-background-color: white;
@@ -50,7 +50,7 @@
     -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
 }
 
-.textarea: focused{
+.textarea:focused{
     -fx-background-color: white;
     -fx-border-color: #4A91FF;
     -fx-background-insets: 1;

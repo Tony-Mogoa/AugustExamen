@@ -4,45 +4,61 @@ import august.examen.models.Question;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 public class QuestionEditViewController{
-    public TextField txtLabel;
-    public TextArea txtContent;
     public CheckBox cbxAcceptsPhotos;
     public Button btnDelete;
     public Question question;
-    public AnchorPane getAp() {
-        return ap;
-    }
+    public VBox parentVBox;
+    public AnchorPane topAp;
+    public AnchorPane lowerAp;
+    public Label lblContent;
+    public Label lblLabel;
 
-    public AnchorPane ap;
+    public VBox getParentVBox() {
+        return parentVBox;
+    }
 
     public void deleteQuestion(ActionEvent actionEvent) {
 
     }
 
+    public AnchorPane getTopAp() {
+        return topAp;
+    }
+
+    public AnchorPane getLowerAp() {
+        return lowerAp;
+    }
+
     public void init(Question question, VBox vbxQuestions){
         this.question = question;
         setCbxAcceptsPhotos(question.isAcceptImages());
-        setTxtContent(question.getContent());
-        setTxtLabel(question.getLabel());
+        setLblContent(question.getContent());
+        setLblLabel(question.getLabel());
+        lblContent.setMinHeight(Region.USE_PREF_SIZE);
+        lowerAp.setMinWidth(Region.USE_PREF_SIZE);
     }
 
-    public String getTxtLabel() {
-        return txtLabel.getText();
+    public String getLblLabel() {
+        return lblLabel.getText();
     }
 
-    public void setTxtLabel(String label) {
-        this.txtLabel.setText(label);
+    public void setLblLabel(String label) {
+        this.lblLabel.setText(label);
     }
 
-    public String getTxtContent() {
-        return txtContent.getText();
+    public String getLblContent() {
+        return lblContent.getText();
     }
 
-    public void setTxtContent(String content) {
-        this.txtContent.setText(content);
+    public void setLblContent(String content) {
+        this.lblContent.setText(content);
+    }
+    public Label getLabelContent(){
+        return this.lblContent;
     }
 
     public boolean getCbxAcceptsPhotos() {

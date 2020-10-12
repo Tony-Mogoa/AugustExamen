@@ -45,9 +45,12 @@ public class AddQuestionsController{
             QuestionEditViewController qevController = qVLoader.getController();
             qevController.init(question, vbxQuestions);
             vbxQuestions.getChildren().add(qV);
-            qevController.getAp().setPrefWidth(btnClose.getScene().getWidth() - 20);
+            qevController.getLowerAp().setPrefWidth(btnClose.getScene().getWidth() - 32);
+            qevController.getParentVBox().setPrefWidth(btnClose.getScene().getWidth() - 32);
             btnClose.getScene().widthProperty().addListener((observable, oldValue, newValue) -> {
-                qevController.getAp().setPrefWidth(newValue.doubleValue() - 20);
+                qevController.getParentVBox().setPrefWidth(newValue.doubleValue() - 32);
+                qevController.getTopAp().setPrefWidth(newValue.doubleValue() - 32);
+                qevController.getLowerAp().setPrefWidth(newValue.doubleValue() - 32);
             });
         } catch (IOException e) {
             e.printStackTrace();
