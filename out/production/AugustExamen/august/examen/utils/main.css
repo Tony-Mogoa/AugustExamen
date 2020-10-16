@@ -99,10 +99,17 @@
     -fx-font-size: 14;
     -fx-font-family: "Segeo UI Semilight";
 }
+
 .action-bar{
     -fx-padding: 8;
 }
 
 .sub-question{
     -fx-padding:0 0 0 20;
+}
+
+.bold-13{
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segeo UI Semilight";
 }

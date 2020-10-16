@@ -40,7 +40,7 @@ public class QuestionEditView extends VBox {
 
         chbAcceptsImageInput = new CheckBox("Accepts image input");
         chbAcceptsImageInput.setSelected(question.isAcceptImages());
-        chbAcceptsImageInput.getStyleClass().add("question-font");
+        chbAcceptsImageInput.getStyleClass().add("bold-13");
 
         btnAddSubQuestion = new Button("Add sub-question");
         btnAddSubQuestion.getStyleClass().add("btn-primary");
@@ -66,7 +66,7 @@ public class QuestionEditView extends VBox {
         btnDeleteQuestion = new Button("Delete");
         btnDeleteQuestion.getStyleClass().add("btn-danger");
 
-        actionBar = new HBox(10, chbAcceptsImageInput, btnAddSubQuestion, btnDeleteQuestion);
+        actionBar = new HBox(20, chbAcceptsImageInput, btnAddSubQuestion, btnDeleteQuestion);
         actionBar.getStyleClass().add("action-bar");
 
         vbxSubQuestions = new VBox(10);
