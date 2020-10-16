@@ -15,21 +15,8 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("views/newExam.fxml"));
         primaryStage.setTitle("August Examen");
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("layouts/drawables/logo32.png")));
+        primaryStage.resizableProperty().setValue(Boolean.FALSE);
         Scene scene = new Scene(root);
-
-        scene.setOnMousePressed(event ->{
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-
-        scene.setOnMouseDragged(mouseEvent -> {
-            primaryStage.setX(mouseEvent.getScreenX() - x);
-            primaryStage.setY(mouseEvent.getScreenY() - y);
-        });
-
-        //scene.getStylesheets().add(getClass().getResource("utils/main.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

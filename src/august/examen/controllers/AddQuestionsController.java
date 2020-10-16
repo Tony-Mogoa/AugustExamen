@@ -2,95 +2,37 @@ package august.examen.controllers;
 
 import august.examen.models.Question;
 import august.examen.utils.AugustScene;
+import august.examen.views.QuestionEditView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class AddQuestionsController{
-    public Button btnClose;
+public class AddQuestionsController {
     public Button btnAdd;
     public VBox vbxQuestions;
-    public Button btnMaximize;
-    public AnchorPane ap;
-    public ScrollPane sp;
-    private boolean maximized = false;
 
-    public void closeWindow(ActionEvent actionEvent) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
-    }
-
-    public void openAddDialog(ActionEvent actionEvent) {
+    public void openAddQuestionsDialog(ActionEvent actionEvent) {
         Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/august/examen/views/newQuestionDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/august/examen/views/NewQuestion.fxml"));
             Parent root = loader.load();
-            stage.setScene(new AugustScene(root));
+            NewQuestionController newQuestionController = loader.getController();
+            AugustScene scene = new AugustScene(root);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
             stage.showAndWait();
-            NewQuestionDialogController nqdController = loader.getController();
-            Question question = nqdController.getQuestion();
-            FXMLLoader qVLoader = new FXMLLoader(getClass().getResource("/august/examen/views/questionEditView.fxml"));
-            Parent qV = qVLoader.load();
-            QuestionEditViewController qevController = qVLoader.getController();
-            qevController.init(question, vbxQuestions);
-            vbxQuestions.getChildren().add(qV);
-            qevController.getLowerAp().setPrefWidth(btnClose.getScene().getWidth() - 32);
-            qevController.getParentVBox().setPrefWidth(btnClose.getScene().getWidth() - 32);
-            btnClose.getScene().widthProperty().addListener((observable, oldValue, newValue) -> {
-                qevController.getParentVBox().setPrefWidth(newValue.doubleValue() - 32);
-                qevController.getTopAp().setPrefWidth(newValue.doubleValue() - 32);
-                qevController.getLowerAp().setPrefWidth(newValue.doubleValue() - 32);
-            });
+            Question question = newQuestionController.getQuestion();
+            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion());
+            vbxQuestions.getChildren().add(questionEditView);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void maximize(ActionEvent actionEvent) {
-        Stage stage = (Stage)btnMaximize.getScene().getWindow();
-        //Scene scene = btnMaximize.getScene();
-        maximized = !maximized;
-        if(maximized){
-            btnMaximize.setText("Minimize");
-        }
-        else{
-            btnMaximize.setText("Maximize");
-        }
-        stage.setMaximized(maximized);
-    }
-
-    public VBox getVbxQuestions() {
-        return vbxQuestions;
-    }
-
-    public void setVbxQuestions(VBox vbxQuestions) {
-        this.vbxQuestions = vbxQuestions;
-    }
-
-    public AnchorPane getAp() {
-        return ap;
-    }
-
-    public void setAp(AnchorPane ap) {
-        this.ap = ap;
-    }
-
-    public ScrollPane getSp() {
-        return sp;
-    }
-
-    public void setSp(ScrollPane sp) {
-        this.sp = sp;
     }
 }

@@ -75,3 +75,34 @@
     -fx-border-radius: 1;
     -fx-padding: 4 7 4 15 ;
 }
+
+.hbox-question{
+    -fx-border-color: #D9D9D9;
+    -fx-padding: 8;
+}
+
+.border-around{
+    -fx-padding: 4;
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 3;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+.question-font{
+    -fx-font-size: 14;
+    -fx-font-family: "Segeo UI Semilight";
+}
+.action-bar{
+    -fx-padding: 8;
+}
+
+.sub-question{
+    -fx-padding:0 0 0 20;
+}

@@ -30,7 +30,7 @@
 }
 
 .btn-primary:pressed{
-    -fx-background-color: #0E71EB;
+    -fx-background-color: #112F6D;
 }
 .textfield {
     -fx-background-color: white;
@@ -50,7 +50,7 @@
     -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
 }
 
-.textarea: focused{
+.textarea:focused{
     -fx-background-color: white;
     -fx-border-color: #4A91FF;
     -fx-background-insets: 1;
@@ -74,4 +74,35 @@
     -fx-background-radius: 1;
     -fx-border-radius: 1;
     -fx-padding: 4 7 4 15 ;
+}
+
+.hbox-question{
+    -fx-border-color: #D9D9D9;
+    -fx-padding: 8;
+}
+
+.border-around{
+    -fx-padding: 4;
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 3;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+.question-font{
+    -fx-font-size: 14;
+    -fx-font-family: "Segeo UI Semilight";
+}
+.action-bar{
+    -fx-padding: 8;
+}
+
+.sub-question{
+    -fx-padding:0 0 0 20;
 }
