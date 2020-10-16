@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Exam {
-    private int examId;
+    private String examId;
     private int hours;
     private int minutes;
 
@@ -23,15 +23,15 @@ public class Exam {
     private String unit;
     private String examType;
     private DatabaseWrapper databaseWrapper;
-    public int getExamId() {
+    public String getExamId() {
         return examId;
     }
 
-    public void setExamId(int examId) {
+    public void setExamId(String examId) {
         this.examId = examId;
     }
 
-    public Exam(int examId, int durationInSeconds, String faculty, String course, String unit, String examType, DatabaseWrapper databaseWrapper) {
+    public Exam(String examId, int durationInSeconds, String faculty, String course, String unit, String examType, DatabaseWrapper databaseWrapper) {
         this.examId = examId;
         this.hours = durationInSeconds;
         this.faculty = faculty;
@@ -41,8 +41,8 @@ public class Exam {
         this.databaseWrapper = databaseWrapper;
     }
 
-    public Exam(DatabaseWrapper databaseWrapper) {
-        this.databaseWrapper = databaseWrapper;
+    public Exam() {
+
     }
 
     public boolean addNewExam(){

@@ -15,18 +15,28 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Vector;
 
 public class QuestionEditView extends VBox {
-    private Label lblLabel;
-    private Label lblContent;
-    private HBox actionBar;
-    private CheckBox chbAcceptsImageInput;
-    private Button btnAddSubQuestion;
-    private Button btnDeleteQuestion;
-    private Button btnEditQuestion;
-    private VBox vbxSubQuestions;
+    private final Label lblLabel;
+    private final Label lblContent;
+    private final HBox actionBar;
+    private final CheckBox chbAcceptsImageInput;
+    private final Button btnAddSubQuestion;
+    private final Button btnDeleteQuestion;
+    private final Button btnEditQuestion;
+    public VBox vbxSubQuestions;
+    private Question question;
+    private int questionIndex;
+    private int subQuestionCount = 0;
+    private Vector<Question> questions;
 
-    public QuestionEditView(Question question){
+    public QuestionEditView(Question question, Vector<Question> questions){
+        this.question = question;
+        questionIndex = questions.size();
+        this.questions = questions;
+        this.question.setHasChildren(false);
+        questions.add(this.question);
         QuestionEditView.this.getStylesheets().add(getClass().getResource("/august/examen/utils/main.css").toExternalForm());
         QuestionEditView.this.getStyleClass().add("hbox-question");
 
@@ -82,9 +92,18 @@ public class QuestionEditView extends VBox {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+            subQuestionCount++;
+
             Question subQuestion = newQuestionController.getQuestion();
-            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion());
+            subQuestion.setParentId(question.getQuestionId());
+            subQuestion.setHasParent(true);
+            subQuestion.setExamId(question.getExamId());
+            subQuestion.setOrder(subQuestionCount);
+
+            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), this.questions);
             vbxSubQuestions.getChildren().add(questionEditView);
+
+            this.question.setHasChildren(true);
         });
 
         btnDeleteQuestion = new Button("Delete");
@@ -104,6 +123,10 @@ public class QuestionEditView extends VBox {
         setLblLabel(question.getLabel());
         setLblContent(question.getContent());
         setChbAcceptsImageInput(question.isAcceptImages());
+        this.question.setLabel(question.getLabel());
+        this.question.setContent(question.getContent());
+        this.question.setAcceptImages(question.isAcceptImages());
+        this.questions.set(questionIndex, this.question);
     }
 
     public void setLblLabel(String label){
@@ -116,6 +139,10 @@ public class QuestionEditView extends VBox {
 
     public void setLblContent(String content){
         lblContent.setText(content);
+    }
+
+    public Question getQuestion() {
+        return question;
     }
 
     public String getLblContent(){

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -25,7 +26,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnAdd" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openAddQuestionsDialog" styleClass="btn-primary" stylesheets="@../utils/main.css" text="Add question" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0" />
-            <ScrollPane fitToHeight="false" fitToWidth="true" stylesheets="@../utils/main.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="48.0">
+            <ScrollPane fitToWidth="true" stylesheets="@../utils/main.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="48.0">
                <content>
                   <VBox fx:id="vbxQuestions" spacing="10.0" style="-fx-background-color: #fff;">
                      <padding>
@@ -34,6 +35,12 @@
                   </VBox>
                </content>
             </ScrollPane>
+            <Button fx:id="btnSave" layoutX="534.0" layoutY="2.0" mnemonicParsing="false" onAction="#saveExam" stylesheets="@../utils/main.css" text="Save" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="8.0">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-success" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
    </center>

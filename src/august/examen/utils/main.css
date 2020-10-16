@@ -32,6 +32,24 @@
 .btn-primary:pressed{
     -fx-background-color: #112F6D;
 }
+
+.btn{
+    -fx-background-radius: 2px;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-padding: 6 10 6 10;
+}
+.btn-success{
+    -fx-background-color: #15C39A;
+}
+.btn-success:hover{
+    -fx-background-color: #34A853;
+}
+
+.btn-success:pressed{
+    -fx-background-color: #15C39A;
+}
+
 .textfield {
     -fx-background-color: white;
     -fx-border-color: #D9D9D9;

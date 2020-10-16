@@ -1,11 +1,12 @@
 package august.examen.models;
 
 import java.io.File;
+import java.util.UUID;
 
 public class Question{
-    private int questionId;
-    private int examId;
-    private int parentId;
+    private String questionId;
+    private String examId;
+    private String parentId;
     private int order;
     private String content;
     private String label;
@@ -30,7 +31,7 @@ public class Question{
         this.acceptImages = acceptImages;
     }
 
-    public Question(int questionId, int examId, int parentId, String content, String label, boolean hasChildren, boolean hasParent, boolean acceptImages) {
+    public Question(String questionId, String examId, String parentId, String content, String label, boolean hasChildren, boolean hasParent, boolean acceptImages) {
         this.questionId = questionId;
         this.examId = examId;
         this.parentId = parentId;
@@ -41,30 +42,31 @@ public class Question{
         this.hasParent = hasParent;
     }
     public  Question(){
-
+        UUID uniqueKey = UUID.randomUUID();
+        this.questionId = uniqueKey.toString();
     }
 
-    public int getQuestionId() {
+    public String getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(String questionId) {
         this.questionId = questionId;
     }
 
-    public int getExamId() {
+    public String getExamId() {
         return examId;
     }
 
-    public void setExamId(int examId) {
+    public void setExamId(String examId) {
         this.examId = examId;
     }
 
-    public int getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
@@ -106,5 +108,20 @@ public class Question{
 
     public void setHasParent(boolean hasParent) {
         this.hasParent = hasParent;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId='" + questionId + '\'' +
+                ", examId='" + examId + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", order=" + order +
+                ", content='" + content + '\'' +
+                ", label='" + label + '\'' +
+                ", acceptImages=" + acceptImages +
+                ", hasChildren=" + hasChildren +
+                ", hasParent=" + hasParent +
+                '}';
     }
 }
