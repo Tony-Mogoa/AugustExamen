@@ -41,9 +41,12 @@ public class Question{
         this.hasChildren = hasChildren;
         this.hasParent = hasParent;
     }
-    public  Question(){
+    public Question(){
         UUID uniqueKey = UUID.randomUUID();
         this.questionId = uniqueKey.toString();
+    }
+    public Question(boolean slate){
+
     }
 
     public String getQuestionId() {
