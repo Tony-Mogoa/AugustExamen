@@ -23,6 +23,7 @@ public class QuestionEditView extends VBox {
     private CheckBox chbAcceptsImageInput;
     private Button btnAddSubQuestion;
     private Button btnDeleteQuestion;
+    private Button btnEditQuestion;
     private VBox vbxSubQuestions;
 
     public QuestionEditView(Question question){
@@ -41,6 +42,29 @@ public class QuestionEditView extends VBox {
         chbAcceptsImageInput = new CheckBox("Accepts image input");
         chbAcceptsImageInput.setSelected(question.isAcceptImages());
         chbAcceptsImageInput.getStyleClass().add("bold-13");
+
+        btnEditQuestion = new Button("Edit");
+        btnEditQuestion.getStyleClass().add("btn-primary");
+        btnEditQuestion.setOnAction(e ->{
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/august/examen/views/NewQuestion.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            NewQuestionController newQuestionController = loader.getController();
+            newQuestionController.txtLabel.setText(lblLabel.getText());
+            newQuestionController.txtContent.setText(lblContent.getText());
+            newQuestionController.chbAcceptsImageInput.setSelected(chbAcceptsImageInput.isSelected());
+            AugustScene scene = new AugustScene(root);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            Question edittedQuestion = newQuestionController.getQuestion();
+            setContent(edittedQuestion);
+        });
 
         btnAddSubQuestion = new Button("Add sub-question");
         btnAddSubQuestion.getStyleClass().add("btn-primary");
@@ -66,7 +90,7 @@ public class QuestionEditView extends VBox {
         btnDeleteQuestion = new Button("Delete");
         btnDeleteQuestion.getStyleClass().add("btn-danger");
 
-        actionBar = new HBox(20, chbAcceptsImageInput, btnAddSubQuestion, btnDeleteQuestion);
+        actionBar = new HBox(20, chbAcceptsImageInput, btnEditQuestion, btnAddSubQuestion, btnDeleteQuestion);
         actionBar.getStyleClass().add("action-bar");
 
         vbxSubQuestions = new VBox(10);
@@ -74,5 +98,35 @@ public class QuestionEditView extends VBox {
 
         QuestionEditView.this.setSpacing(10);
         QuestionEditView.this.getChildren().addAll(lblLabel, lblContent, vbxSubQuestions, actionBar);
+    }
+
+    public void setContent(Question question){
+        setLblLabel(question.getLabel());
+        setLblContent(question.getContent());
+        setChbAcceptsImageInput(question.isAcceptImages());
+    }
+
+    public void setLblLabel(String label){
+        lblLabel.setText(label);
+    }
+
+    public String getLblLabel(){
+        return lblLabel.getText();
+    }
+
+    public void setLblContent(String content){
+        lblContent.setText(content);
+    }
+
+    public String getLblContent(){
+        return lblContent.getText();
+    }
+
+    public void setChbAcceptsImageInput(boolean accepts){
+        chbAcceptsImageInput.setSelected(accepts);
+    }
+
+    public boolean getChbAcceptsImageInput(){
+        return chbAcceptsImageInput.isSelected();
     }
 }
