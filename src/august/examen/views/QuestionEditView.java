@@ -1,6 +1,7 @@
 package august.examen.views;
 
 import august.examen.controllers.NewQuestionController;
+import august.examen.db.DatabaseWrapper;
 import august.examen.models.Question;
 import august.examen.utils.AugustScene;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,7 @@ public class QuestionEditView extends VBox {
     private int subQuestionCount = 0;
     private Vector<Question> questions;
 
-    public QuestionEditView(Question question, Vector<Question> questions){
+    public QuestionEditView(Question question, Vector<Question> questions, DatabaseWrapper databaseWrapper){
         this.question = question;
         questionIndex = questions.size();
         this.questions = questions;
@@ -65,6 +66,7 @@ public class QuestionEditView extends VBox {
                 ioException.printStackTrace();
             }
             NewQuestionController newQuestionController = loader.getController();
+            newQuestionController.setDatabaseWrapper(databaseWrapper);
             newQuestionController.txtLabel.setText(lblLabel.getText());
             newQuestionController.txtContent.setText(lblContent.getText());
             newQuestionController.chbAcceptsImageInput.setSelected(chbAcceptsImageInput.isSelected());
@@ -88,6 +90,7 @@ public class QuestionEditView extends VBox {
                 ioException.printStackTrace();
             }
             NewQuestionController newQuestionController = loader.getController();
+            newQuestionController.setDatabaseWrapper(databaseWrapper);
             AugustScene scene = new AugustScene(root);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
@@ -100,7 +103,7 @@ public class QuestionEditView extends VBox {
             subQuestion.setExamId(question.getExamId());
             subQuestion.setOrder(subQuestionCount);
 
-            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), this.questions);
+            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), this.questions, databaseWrapper);
             vbxSubQuestions.getChildren().add(questionEditView);
 
             this.question.setHasChildren(true);

@@ -1,6 +1,10 @@
 package august.examen.models;
 
+import august.examen.db.DatabaseWrapper;
+
 import java.io.File;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.UUID;
 
 public class Question{
@@ -14,22 +18,7 @@ public class Question{
     private File[] photosAttached;
     private boolean hasChildren;
     private boolean hasParent;
-
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
-    public boolean isAcceptImages() {
-        return acceptImages;
-    }
-
-    public void setAcceptImages(boolean acceptImages) {
-        this.acceptImages = acceptImages;
-    }
+    private DatabaseWrapper databaseWrapper;
 
     public Question(String questionId, String examId, String parentId, String content, String label, boolean hasChildren, boolean hasParent, boolean acceptImages) {
         this.questionId = questionId;
@@ -41,14 +30,36 @@ public class Question{
         this.hasChildren = hasChildren;
         this.hasParent = hasParent;
     }
-    public Question(){
+
+    public Question(DatabaseWrapper databaseWrapper){
         UUID uniqueKey = UUID.randomUUID();
         this.questionId = uniqueKey.toString();
+        this.databaseWrapper = databaseWrapper;
     }
+
     public Question(boolean slate){
 
     }
 
+    public boolean saveQuestion(){
+        String sqlSave = "INSERT INTO question (exam_id, q_parent_id, q_content, q_label, q_accepts_images, q_has_children, q_has_parent, q_order, q_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pStmt = databaseWrapper.getConnection().prepareStatement(sqlSave);
+            pStmt.setString(1, examId);
+            pStmt.setString(2, parentId);
+            pStmt.setString(3, content);
+            pStmt.setString(4, label);
+            pStmt.setBoolean(5, acceptImages);
+            pStmt.setBoolean(6, hasChildren);
+            pStmt.setBoolean(7, hasParent);
+            pStmt.setInt(8, order);
+            pStmt.setString(9, questionId);
+            return pStmt.executeUpdate() > 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+    }
     public String getQuestionId() {
         return questionId;
     }
@@ -111,6 +122,22 @@ public class Question{
 
     public void setHasParent(boolean hasParent) {
         this.hasParent = hasParent;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public boolean isAcceptImages() {
+        return acceptImages;
+    }
+
+    public void setAcceptImages(boolean acceptImages) {
+        this.acceptImages = acceptImages;
     }
 
     @Override

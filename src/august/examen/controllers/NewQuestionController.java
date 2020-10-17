@@ -1,5 +1,6 @@
 package august.examen.controllers;
 
+import august.examen.db.DatabaseWrapper;
 import august.examen.models.Question;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -14,9 +15,14 @@ public class NewQuestionController {
     public TextArea txtContent;
     public CheckBox chbAcceptsImageInput;
     private Question question;
+    public DatabaseWrapper databaseWrapper;
+
+    public void setDatabaseWrapper(DatabaseWrapper databaseWrapper) {
+        this.databaseWrapper = databaseWrapper;
+    }
 
     public void addQuestionData(ActionEvent actionEvent) {
-        question = new Question();
+        question = new Question(databaseWrapper);
         question.setLabel(txtLabel.getText());
         question.setContent(txtContent.getText());
         question.setAcceptImages(chbAcceptsImageInput.isSelected());

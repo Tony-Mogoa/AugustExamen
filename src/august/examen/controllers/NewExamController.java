@@ -1,5 +1,6 @@
 package august.examen.controllers;
 
+import august.examen.db.DatabaseWrapper;
 import august.examen.models.Exam;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +30,7 @@ public class NewExamController implements Initializable {
         try {
             UUID uniqueKey = UUID.randomUUID();
 
-            Exam newExam = new Exam();
+            Exam newExam = new Exam(new DatabaseWrapper());
             newExam.setExamId(uniqueKey.toString());
             newExam.setFaculty(txtSchool.getText());
             newExam.setCourse(txtCourse.getText());

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="112.0" layoutY="125.0" prefHeight="36.0" prefWidth="377.0" promptText="Exam code" styleClass="textfield" stylesheets="@../utils/main.css" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="92.0">
+         <font>
+            <Font name="Segoe UI Semibold" size="13.0" />
+         </font>
+      </TextField>
+      <Button layoutX="274.0" layoutY="219.0" mnemonicParsing="false" stylesheets="@../utils/main.css" text="Locate" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="btn-success" />
+         </styleClass>
+      </Button>
+      <Label layoutX="48.0" layoutY="60.0" style="-fx-text-fill: #15C39A;" text="Enter exam code" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font name="Segoe UI Semibold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
