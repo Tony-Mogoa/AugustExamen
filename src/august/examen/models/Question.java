@@ -37,7 +37,7 @@ public class Question{
         this.databaseWrapper = databaseWrapper;
     }
 
-    public Question(boolean slate){
+    public Question(boolean empty){
 
     }
 

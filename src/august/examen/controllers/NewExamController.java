@@ -28,10 +28,7 @@ public class NewExamController implements Initializable {
 
     public void openAddQuestionsView() {
         try {
-            UUID uniqueKey = UUID.randomUUID();
-
             Exam newExam = new Exam(new DatabaseWrapper());
-            newExam.setExamId(uniqueKey.toString());
             newExam.setFaculty(txtSchool.getText());
             newExam.setCourse(txtCourse.getText());
             newExam.setUnit(txtUnit.getText());
