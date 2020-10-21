@@ -5,7 +5,7 @@ import august.examen.models.Question;
 import java.sql.*;
 import java.util.Vector;
 
-public class DatabaseWrapper extends Thread{
+public class DatabaseWrapper{
     private final String connectionUrl = "jdbc:mysql://localhost:3306/august_examen?zeroDateTimeBehavior=convertToNull";
     private Connection connection;
 

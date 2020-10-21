@@ -27,7 +27,7 @@
          </font>
       </Label>
       <ProgressIndicator fx:id="progressIndicator" layoutX="287.0" layoutY="258.0" prefHeight="36.0" prefWidth="40.0" visible="false" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" />
-      <Label fx:id="lblStatusText" layoutX="250.0" layoutY="296.0" prefHeight="19.0" prefWidth="100.0" text="Fetching exam ..." visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
+      <Label fx:id="lblStatusText" layoutX="250.0" layoutY="296.0" prefHeight="19.0" prefWidth="100.0" text="Fetching exam ..." textFill="#029bde" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
          <font>
             <Font name="Segoe UI Semilight" size="13.0" />
          </font>
