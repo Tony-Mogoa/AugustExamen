@@ -127,6 +127,7 @@ public class Exam {
                     subQuestion.setAcceptImages(rs.getBoolean("q_accepts_images"));
                     subQuestion.setHasChildren(rs.getBoolean("q_has_children"));
                     subQuestion.setHasParent(rs.getBoolean("q_has_parent"));
+                    subQuestion.setParentLabel(question.getLabel());
                     questions.add(subQuestion);
                     getChildQuestions(subQuestion);
                 }

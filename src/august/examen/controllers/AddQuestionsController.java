@@ -37,15 +37,19 @@ public class AddQuestionsController {
             stage.setScene(scene);
             stage.showAndWait();
 
-            questionCount++;
-            Question question = newQuestionController.getQuestion();
-            question.setExamId(exam.getExamId());
-            question.setParentId("");
-            question.setHasParent(false);
-            question.setOrder(questionCount);
+            try{
+                Question question = newQuestionController.getQuestion();
+                questionCount++;
+                question.setExamId(exam.getExamId());
+                question.setParentId("");
+                question.setHasParent(false);
+                question.setOrder(questionCount);
 
-            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), questions, exam.databaseWrapper);
-            vbxQuestions.getChildren().add(questionEditView);
+                QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), questions, exam.databaseWrapper);
+                vbxQuestions.getChildren().add(questionEditView);
+            } catch (NullPointerException ex){
+
+            }
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
@@ -60,6 +64,7 @@ public class AddQuestionsController {
     }
 
     public void saveExam() {
+        System.out.println(questions.size());
         progressIndicator.setVisible(true);
         Task task = new Task<Void>() {
             @Override public Void call() {

@@ -131,3 +131,12 @@
     -fx-font-weight: bold;
     -fx-font-family: "Segeo UI Semilight";
 }
+
+.question-link{
+    -fx-border-color: #D9D9D9;
+    -fx-border-width: 1;
+}
+.question-link: hover{
+    -fx-border-color: #2E2E2E;
+    -fx-border-width: 1;
+}

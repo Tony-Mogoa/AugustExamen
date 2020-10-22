@@ -53,6 +53,7 @@ public class QuestionEditView extends VBox {
         chbAcceptsImageInput = new CheckBox("Accepts image input");
         chbAcceptsImageInput.setSelected(question.isAcceptImages());
         chbAcceptsImageInput.getStyleClass().add("bold-13");
+        chbAcceptsImageInput.setDisable(true);
 
         btnEditQuestion = new Button("Edit");
         btnEditQuestion.getStyleClass().add("btn-primary");
@@ -74,8 +75,12 @@ public class QuestionEditView extends VBox {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
-            Question edittedQuestion = newQuestionController.getQuestion();
-            setContent(edittedQuestion);
+            try {
+                Question edittedQuestion = newQuestionController.getQuestion();
+                setContent(edittedQuestion);
+            }catch (NullPointerException ex){
+
+            }
         });
 
         btnAddSubQuestion = new Button("Add sub-question");
@@ -95,22 +100,29 @@ public class QuestionEditView extends VBox {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
-            subQuestionCount++;
 
-            Question subQuestion = newQuestionController.getQuestion();
-            subQuestion.setParentId(question.getQuestionId());
-            subQuestion.setHasParent(true);
-            subQuestion.setExamId(question.getExamId());
-            subQuestion.setOrder(subQuestionCount);
-
-            QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), this.questions, databaseWrapper);
-            vbxSubQuestions.getChildren().add(questionEditView);
-
-            this.question.setHasChildren(true);
+            try {
+                Question subQuestion = newQuestionController.getQuestion();
+                subQuestionCount++;
+                subQuestion.setParentId(question.getQuestionId());
+                subQuestion.setHasParent(true);
+                subQuestion.setExamId(question.getExamId());
+                subQuestion.setOrder(subQuestionCount);
+                QuestionEditView questionEditView = new QuestionEditView(newQuestionController.getQuestion(), this.questions, databaseWrapper);
+                vbxSubQuestions.getChildren().add(questionEditView);
+                this.question.setHasChildren(true);
+            } catch (NullPointerException ex){
+                //ex.printStackTrace();
+            }
         });
 
         btnDeleteQuestion = new Button("Delete");
         btnDeleteQuestion.getStyleClass().add("btn-danger");
+        btnDeleteQuestion.setOnAction(e -> {
+            questions.remove(questionIndex);
+            VBox parent = (VBox) QuestionEditView.this.getParent();
+            parent.getChildren().remove(QuestionEditView.this);
+        });
 
         actionBar = new HBox(20, chbAcceptsImageInput, btnEditQuestion, btnAddSubQuestion, btnDeleteQuestion);
         actionBar.getStyleClass().add("action-bar");

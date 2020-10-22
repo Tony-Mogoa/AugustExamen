@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="august.examen.controllers.ExamViewController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="New Exam" />
+          <Menu mnemonicParsing="false" text="Connect">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Connect to device" />
+              <MenuItem mnemonicParsing="false" text="Pair new device" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Export">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Export PDF" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="About" />
+            <Menu mnemonicParsing="false" text="Help" />
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <ScrollPane fitToWidth="true" pannable="true" prefHeight="351.0" prefWidth="215.0" stylesheets="@../utils/main.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="vbxQuestionLinks" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #fff;">
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding></VBox>
+         </content>
+         <styleClass>
+            <String fx:value="scroll-pane" />
+            <String fx:value="viewport" />
+         </styleClass>
+      </ScrollPane>
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true" pannable="true" prefHeight="200.0" prefWidth="200.0" stylesheets="@../utils/main.css" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </content>
+         <styleClass>
+            <String fx:value="scroll-pane" />
+            <String fx:value="viewport" />
+         </styleClass>
+      </ScrollPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #E5E5E5;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

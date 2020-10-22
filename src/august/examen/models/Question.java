@@ -18,6 +18,8 @@ public class Question{
     private File[] photosAttached;
     private boolean hasChildren;
     private boolean hasParent;
+    private String parentLabel;
+
     private DatabaseWrapper databaseWrapper;
 
     public Question(String questionId, String examId, String parentId, String content, String label, boolean hasChildren, boolean hasParent, boolean acceptImages) {
@@ -138,6 +140,14 @@ public class Question{
 
     public void setAcceptImages(boolean acceptImages) {
         this.acceptImages = acceptImages;
+    }
+
+    public String getParentLabel() {
+        return parentLabel;
+    }
+
+    public void setParentLabel(String parentLabel) {
+        this.parentLabel = parentLabel;
     }
 
     @Override
