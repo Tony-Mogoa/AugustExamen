@@ -71,6 +71,7 @@ public class QuestionEditView extends VBox {
             newQuestionController.txtLabel.setText(lblLabel.getText());
             newQuestionController.txtContent.setText(lblContent.getText());
             newQuestionController.chbAcceptsImageInput.setSelected(chbAcceptsImageInput.isSelected());
+            newQuestionController.btnAdd.setText("Save");
             AugustScene scene = new AugustScene(root);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);

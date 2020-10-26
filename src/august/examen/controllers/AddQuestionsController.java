@@ -7,6 +7,7 @@ import august.examen.views.QuestionEditView;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.VBox;
@@ -64,7 +65,6 @@ public class AddQuestionsController {
     }
 
     public void saveExam() {
-        System.out.println(questions.size());
         progressIndicator.setVisible(true);
         Task task = new Task<Void>() {
             @Override public Void call() {
@@ -84,8 +84,24 @@ public class AddQuestionsController {
         task.setOnSucceeded(e ->{
             progressIndicator.setVisible(false);
             exam.databaseWrapper.closeConnection();
+            System.out.println(exam.getExamId());
             Stage stage = (Stage) btnSave.getScene().getWindow();
             stage.close();
+
+            Stage searchExamStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/august/examen/views/SearchExamView.fxml"));
+            try {
+                Parent root = loader.load();
+                SearchExamController searchExamController = loader.getController();
+                searchExamController.txtCode.setText(exam.getExamId());
+                Scene scene = new Scene(root);
+                searchExamStage.setTitle("Search Exam");
+                searchExamStage.setScene(scene);
+                searchExamStage.resizableProperty().setValue(Boolean.FALSE);
+                searchExamStage.show();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         });
     }
 

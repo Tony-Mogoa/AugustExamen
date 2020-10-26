@@ -37,6 +37,7 @@ public class SearchExamController implements Initializable {
                     Exam exam = new Exam(new DatabaseWrapper(), true);
                     exam.getExam(code);
                     questions = exam.getExamQuestions();
+                    exam.getDatabaseWrapper().closeConnection();
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -48,6 +49,7 @@ public class SearchExamController implements Initializable {
         task.setOnSucceeded(e ->{
             progressIndicator.setVisible(false);
             lblStatusText.setVisible(false);
+
             //Close the current stage
             Stage currentStage = (Stage) btnLocate.getScene().getWindow();
             currentStage.hide();
@@ -73,6 +75,6 @@ public class SearchExamController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtCode.setText("da33c789-5a89-4625-8c68-7c001c20a4b5");
+        //txtCode.setText("da33c789-5a89-4625-8c68-7c001c20a4b5");
     }
 }

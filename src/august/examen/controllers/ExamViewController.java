@@ -3,6 +3,7 @@ package august.examen.controllers;
 import august.examen.models.Question;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.util.Vector;
 
 public class ExamViewController {
     public VBox vbxQuestionLinks;// the side pane item which represent questions
+    public Label lblLabel;
+    public Label lblContent;
     private Vector<Question> questions;
 
     public void init(Vector<Question> questions){
@@ -26,6 +29,15 @@ public class ExamViewController {
                     questionLinkController.init(question.getLabel(), question.getContent());
                 }
                 vbxQuestionLinks.getChildren().add(root);
+                root.setOnMouseClicked(e -> {
+                    if(question.isHasParent()){
+                        lblLabel.setText(question.getParentLabel() + "(" + question.getLabel() + ")");
+                    }
+                    else{
+                        lblLabel.setText(question.getLabel());
+                    }
+                    lblContent.setText(question.getContent());
+                });
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -2,6 +2,7 @@ package august.examen.controllers;
 
 import august.examen.db.DatabaseWrapper;
 import august.examen.models.Exam;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,10 +27,24 @@ public class NewExamController implements Initializable {
     public TextField txtUnit;
     public TextField txtHours;
     public TextField txtMinutes;
+    public ProgressIndicator progress;
 
     public void openAddQuestionsView() {
-        try {
-            Exam newExam = new Exam(new DatabaseWrapper());
+        Exam newExam = new Exam();
+        progress.setVisible(true);
+        Task task = new Task<Void>(){
+            @Override public Void call() {
+                try{
+                    newExam.setDatabaseWrapper(new DatabaseWrapper());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };
+        new Thread(task).start();
+        task.setOnSucceeded(e -> {
+            progress.setVisible(false);
             newExam.setFaculty(txtSchool.getText());
             newExam.setCourse(txtCourse.getText());
             newExam.setUnit(txtUnit.getText());
@@ -39,17 +55,20 @@ public class NewExamController implements Initializable {
             Stage currentStage = (Stage) btnCreate.getScene().getWindow();
             currentStage.hide();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/august/examen/views/AddQuestions.fxml"));
-            Parent root = loader.load();
-            AddQuestionsController addQuestionsController = loader.getController();
-            addQuestionsController.setExam(newExam);
+            try {
+                Parent root = loader.load();
+                AddQuestionsController addQuestionsController = loader.getController();
+                addQuestionsController.setExam(newExam);
 
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
     }
 
     @Override

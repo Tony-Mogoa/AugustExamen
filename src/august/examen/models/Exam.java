@@ -30,8 +30,15 @@ public class Exam {
         this.databaseWrapper = databaseWrapper;
     }
 
-    public Exam(DatabaseWrapper databaseWrapper) {
+    public DatabaseWrapper getDatabaseWrapper() {
+        return databaseWrapper;
+    }
+
+    public void setDatabaseWrapper(DatabaseWrapper databaseWrapper) {
         this.databaseWrapper = databaseWrapper;
+    }
+
+    public Exam() {
         UUID uniqueKey = UUID.randomUUID();
         this.examId = uniqueKey.toString();
     }
