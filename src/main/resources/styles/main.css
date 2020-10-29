@@ -1,0 +1,146 @@
+.input{
+	-fx-background-radius: 2px;
+}
+
+.btn-danger{
+    -fx-background-radius: 2px;
+    -fx-background-color: #EC5155;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-padding: 6 10 6 10;
+}
+
+.btn-danger:hover{
+    -fx-background-color: #DC3E33;
+}
+
+.btn-danger:pressed{
+    -fx-background-color: #B83A2C;
+}
+.btn-primary{
+    -fx-background-radius: 2px;
+    -fx-background-color: #4A91FF;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-padding: 6 10 6 10;
+}
+
+.btn-primary:hover{
+    -fx-background-color: #4A6EE0;
+}
+
+.btn-primary:pressed{
+    -fx-background-color: #112F6D;
+}
+
+.btn{
+    -fx-background-radius: 2px;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-padding: 6 10 6 10;
+}
+.btn-success{
+    -fx-background-color: #15C39A;
+}
+.btn-success:hover{
+    -fx-background-color: #34A853;
+}
+
+.btn-success:pressed{
+    -fx-background-color: #15C39A;
+}
+
+.textfield {
+    -fx-background-color: white;
+    -fx-border-color: #D9D9D9;
+    -fx-background-insets: -0.2, 1, -1.4, 3;
+    -fx-border-insets: -0.2, 1, -1.4, 3;
+    -fx-background-radius: 1;
+    -fx-border-radius: 1;
+    -fx-padding: 4 7 4 15 ;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+.textarea{
+    -fx-background-color: white;
+    -fx-border-color: #D9D9D9;
+    -fx-background-insets: 1;
+    -fx-border-insets: 1;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+
+.textarea:focused{
+    -fx-background-color: white;
+    -fx-border-color: #4A91FF;
+    -fx-background-insets: 1;
+    -fx-border-insets: 1;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+
+.textarea .content {
+    -fx-background-color:  white;
+}
+
+.textarea:focused .content {
+    -fx-background-color:  white;
+}
+
+.textfield:focused {
+    -fx-border-color : #4A91FF;
+    -fx-background-color: white;
+    -fx-border-insets: -0.2, 1, -1.4, 3;
+    -fx-background-insets: -0.2, 1, -1.4, 3;
+    -fx-background-radius: 1;
+    -fx-border-radius: 1;
+    -fx-padding: 4 7 4 15 ;
+}
+
+.hbox-question{
+    -fx-border-color: #D9D9D9;
+    -fx-padding: 8;
+}
+
+.border-around{
+    -fx-padding: 4;
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 3;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+.question-font{
+    -fx-font-size: 14;
+    -fx-font-family: "Segeo UI Semilight";
+}
+
+.action-bar{
+    -fx-padding: 8;
+}
+
+.sub-question{
+    -fx-padding:0 0 0 20;
+}
+
+.bold-13{
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segeo UI Semilight";
+}
+
+.question-link{
+    -fx-border-color: #D9D9D9;
+    -fx-border-width: 1;
+}
+.question-link: hover{
+    -fx-border-color: #4A91FF;
+    -fx-border-width: 2;
+}
+.clicked{
+    -fx-border-color: #15C39A;
+    -fx-border-width: 2;
+}
