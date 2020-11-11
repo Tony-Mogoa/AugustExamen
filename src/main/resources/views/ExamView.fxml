@@ -6,32 +6,40 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="august.examen.controllers.ExamViewController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="New Exam" />
-          <Menu mnemonicParsing="false" text="Connect">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Connect to device" />
-              <MenuItem mnemonicParsing="false" text="Pair new device" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Export">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Export PDF" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="About" />
-            <Menu mnemonicParsing="false" text="Help" />
-        </menus>
-      </MenuBar>
+      <HBox style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar style="-fx-background-color: #fff;">
+              <menus>
+                <Menu mnemonicParsing="false" text="New Exam" />
+                <Menu mnemonicParsing="false" text="Connect">
+                  <items>
+                        <MenuItem fx:id="miConnectDevice" mnemonicParsing="false" text="Connect to device" />
+                    <MenuItem mnemonicParsing="false" text="Pair new device" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Export">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Export PDF" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="About" />
+                  <Menu mnemonicParsing="false" text="Help" />
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
    </top>
    <left>
       <ScrollPane fitToWidth="true" pannable="true" prefHeight="351.0" prefWidth="215.0" stylesheets="@../styles/main.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
@@ -69,7 +77,11 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </VBox>
-                  <VBox style="-fx-background-color: #fff;" styleClass="border-around" stylesheets="@../styles/main.css" />
+                  <AnchorPane prefHeight="253.0" prefWidth="375.0" style="-fx-background-color: #E8E8E8;">
+                     <children>
+                        <ProgressBar fx:id="progressBar" prefHeight="18.0" prefWidth="290.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
                </children>
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
@@ -82,6 +94,19 @@
       </ScrollPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #E5E5E5;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #E5E5E5;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgBT" fitHeight="18.0" fitWidth="18.0" layoutX="16.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="4.0">
+               <image>
+                  <Image url="@../img/icons8_bluetooth_2_18px.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblState" layoutX="33.0" layoutY="4.0" text="OFF" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="4.0">
+               <font>
+                  <Font name="Segoe UI Semibold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDevice" layoutX="51.0" layoutY="4.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="4.0" />
+         </children></AnchorPane>
    </bottom>
 </BorderPane>
