@@ -94,7 +94,7 @@ public class AddQuestionsController {
                 Parent root = loader.load();
                 SearchExamController searchExamController = loader.getController();
                 searchExamController.txtCode.setText(exam.getExamId());
-                Scene scene = new Scene(root);
+                AugustScene scene = new AugustScene(root);
                 searchExamStage.setTitle("Search Exam");
                 searchExamStage.setScene(scene);
                 searchExamStage.resizableProperty().setValue(Boolean.FALSE);

@@ -1,5 +1,6 @@
 package august.examen;
 
+import august.examen.utils.AugustScene;
 import august.examen.utils.BluetoothStateUpdater;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/views/SearchExamView.fxml"));
         primaryStage.setTitle("August Examen");
         primaryStage.resizableProperty().setValue(Boolean.FALSE);
-        Scene scene = new Scene(root);
+        AugustScene scene = new AugustScene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

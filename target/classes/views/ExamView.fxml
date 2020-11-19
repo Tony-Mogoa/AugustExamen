@@ -69,7 +69,7 @@
                         </Label>
                         <Label fx:id="lblContent" text="Label" wrapText="true">
                            <font>
-                              <Font name="Segoe UI Semibold" size="15.0" />
+                              <Font name="Liberation Sans" size="15.0" />
                            </font>
                         </Label>
                      </children>

@@ -1,3 +1,7 @@
+.root{
+    -fx-font-family: "Ubuntu";
+}
+
 .input{
 	-fx-background-radius: 2px;
 }

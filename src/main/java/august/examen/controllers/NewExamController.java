@@ -2,6 +2,7 @@ package august.examen.controllers;
 
 import august.examen.db.DatabaseWrapper;
 import august.examen.models.Exam;
+import august.examen.utils.AugustScene;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,7 +60,7 @@ public class NewExamController implements Initializable {
                 addQuestionsController.setExam(newExam);
 
                 Stage stage = new Stage();
-                Scene scene = new Scene(root);
+                AugustScene scene = new AugustScene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ioException) {
