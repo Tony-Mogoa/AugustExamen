@@ -41,7 +41,7 @@ public class BluetoothServer extends Thread{
             while(true){
                 StreamConnection sc = scn.acceptAndOpen();
                 RemoteDevice rd = RemoteDevice.getRemoteDevice(sc);
-                //System.out.println("New client connection... " + rd.getFriendlyName(false));
+                System.out.println("New client connection... " + rd.getFriendlyName(false));
                 setDeviceName(rd.getFriendlyName(false));
                 new BtClientSession(sc, progressBar).start();
             }
