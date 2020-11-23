@@ -25,6 +25,7 @@ public class ExamViewController {
     public Label lblDevice;
     public MenuItem miConnectDevice;
     public ProgressBar progressBar;
+    public ImageView image;
     private Vector<Question> questions;
     private Parent clickedLink = null;
     public volatile boolean bluetoothOn = false;
@@ -66,7 +67,7 @@ public class ExamViewController {
                 e.printStackTrace();
             }
             miConnectDevice.setOnAction(e ->{
-                BluetoothServer bluetoothServer = new BluetoothServer(progressBar){
+                BluetoothServer bluetoothServer = new BluetoothServer(progressBar, image){
                     @Override
                     public void setDeviceName(String deviceName) {
                         Platform.runLater(() -> lblDevice.setText(deviceName));

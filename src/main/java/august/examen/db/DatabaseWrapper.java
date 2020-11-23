@@ -6,8 +6,8 @@ import java.sql.*;
 import java.util.Vector;
 
 public class DatabaseWrapper{
-    private final String connectionUrl = "jdbc:mysql://remotemysql.com:3306/CvDaJEZqm6?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&verifyServerCertificate=false&useSSL=true";
-    //private final String connectionUrl = "jdbc:mysql://localhost/august_examen?zeroDateTimeBehavior=convertToNull";
+    //private final String connectionUrl = "jdbc:mysql://remotemysql.com:3306/CvDaJEZqm6?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&verifyServerCertificate=false&useSSL=true";
+    private final String connectionUrl = "jdbc:mysql://localhost/august_examen?zeroDateTimeBehavior=convertToNull";
     private Connection connection;
 
     public Connection getConnection() {
@@ -20,8 +20,8 @@ public class DatabaseWrapper{
 
     public DatabaseWrapper() {
         try {
-            connection = DriverManager.getConnection(connectionUrl, "CvDaJEZqm6", "xuLs9ErMn8");
-            //connection = DriverManager.getConnection(connectionUrl, "root", "");
+            //connection = DriverManager.getConnection(connectionUrl, "CvDaJEZqm6", "xuLs9ErMn8");
+            connection = DriverManager.getConnection(connectionUrl, "root", "");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

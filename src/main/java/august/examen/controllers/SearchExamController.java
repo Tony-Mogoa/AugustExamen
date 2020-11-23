@@ -77,6 +77,6 @@ public class SearchExamController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //txtCode.setText("da33c789-5a89-4625-8c68-7c001c20a4b5");
         txtCode.setText("845ff464-825c-44cc-8fd9-c6c883f16817");
-        //txtCode.setText("0ab0c1aa-2092-4cf7-bd7b-c5f29fa3fa5e");
+        //txtCode.setText("38b5ee0b-f392-435b-b0e9-88e79feb5d66");// for remote db
     }
 }

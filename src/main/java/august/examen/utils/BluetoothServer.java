@@ -1,6 +1,7 @@
 package august.examen.utils;
 
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 
 import javax.bluetooth.*;
 import javax.microedition.io.Connector;
@@ -17,6 +18,7 @@ public class BluetoothServer extends Thread{
     private final String connURL = "btspp://localhost:"+SERVICE_UUID.toString()+";name=" + SERVICE_NAME;
     private StreamConnectionNotifier scn;
     private ProgressBar progressBar = null;
+    private ImageView imageView = null;
 
     @Override
     public void run() {
@@ -31,19 +33,23 @@ public class BluetoothServer extends Thread{
         }
     }
 
-    public BluetoothServer(ProgressBar progressBar){
+    public BluetoothServer(ProgressBar progressBar, ImageView imageView){
         this.progressBar = progressBar;
+        this.imageView = imageView;
     }
 
     private void createConnection(){
         try {
             scn = (StreamConnectionNotifier) Connector.open(connURL);
+            //System.out.println("Waiting for connection");
             while(true){
+                System.out.println("Waiting for connection");
                 StreamConnection sc = scn.acceptAndOpen();
+                System.out.println("Waiting for connection2");
                 RemoteDevice rd = RemoteDevice.getRemoteDevice(sc);
                 System.out.println("New client connection... " + rd.getFriendlyName(false));
                 setDeviceName(rd.getFriendlyName(false));
-                new BtClientSession(sc, progressBar).start();
+                new BtClientSession(sc, progressBar, imageView).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
