@@ -5,6 +5,7 @@ import august.examen.db.DatabaseWrapper;
 import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Question{
@@ -15,7 +16,7 @@ public class Question{
     private String content;
     private String label;
     private boolean acceptImages;
-    private File[] photosAttached;
+    private ArrayList<File> photosAttached = new ArrayList<>();
     private boolean hasChildren;
     private boolean hasParent;
     private String parentLabel;
@@ -102,11 +103,11 @@ public class Question{
         this.label = label;
     }
 
-    public File[] getPhotosAttached() {
+    public ArrayList<File> getPhotosAttached() {
         return photosAttached;
     }
 
-    public void setPhotosAttached(File[] photosAttached) {
+    public void setPhotosAttached(ArrayList<File> photosAttached) {
         this.photosAttached = photosAttached;
     }
 

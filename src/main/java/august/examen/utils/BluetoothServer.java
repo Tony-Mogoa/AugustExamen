@@ -1,6 +1,11 @@
 package august.examen.utils;
 
+import august.examen.models.ImageSlider;
+import august.examen.models.Question;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 
 import javax.bluetooth.*;
@@ -19,6 +24,13 @@ public class BluetoothServer extends Thread{
     private StreamConnectionNotifier scn;
     private ProgressBar progressBar = null;
     private ImageView imageView = null;
+    private Question question;
+    private BtClientSession btClientSession;
+    private Label lblImgCount;
+    private ImageSlider imageSlider;
+    private Button btnLeft;
+    private Button btnRight;
+    private Label lblConnecting;
 
     @Override
     public void run() {
@@ -33,9 +45,25 @@ public class BluetoothServer extends Thread{
         }
     }
 
-    public BluetoothServer(ProgressBar progressBar, ImageView imageView){
+    public BluetoothServer(ProgressBar progressBar, ImageView imageView, Label lblImgCount, ImageSlider imageSlider, Button btnLeft, Button btnRight, Label lblConnecting){
         this.progressBar = progressBar;
         this.imageView = imageView;
+        this.lblImgCount = lblImgCount;
+        this.imageSlider =imageSlider;
+        this.btnLeft = btnLeft;
+        this.btnRight = btnRight;
+        this.lblConnecting = lblConnecting;
+    }
+
+    public void setQuestion(Question question){
+        this.question = question;
+        if(btClientSession != null){
+            btClientSession.setQuestion(question);
+        }
+    }
+
+    public  Question getQuestion(){
+        return this.question;
     }
 
     private void createConnection(){
@@ -45,15 +73,24 @@ public class BluetoothServer extends Thread{
             while(true){
                 System.out.println("Waiting for connection");
                 StreamConnection sc = scn.acceptAndOpen();
-                System.out.println("Waiting for connection2");
                 RemoteDevice rd = RemoteDevice.getRemoteDevice(sc);
                 System.out.println("New client connection... " + rd.getFriendlyName(false));
                 setDeviceName(rd.getFriendlyName(false));
-                new BtClientSession(sc, progressBar, imageView).start();
+                btClientSession = new BtClientSession(sc, progressBar, imageView, this.question, lblImgCount, imageSlider, btnLeft, btnRight);
+                if(this.question == null){
+                    System.out.println("null");
+                }
+                btClientSession.start();
+                lblConnecting.setVisible(false);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setImageSlider(ImageSlider imageSlider) {
+        this.imageSlider = imageSlider;
+        btClientSession.setImageSlider(imageSlider);
     }
 
     public void setDeviceName(String deviceName){
