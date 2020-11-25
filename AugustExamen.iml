@@ -46,7 +46,6 @@
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-compiler-manager:2.8.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.plexus:plexus-compiler-javac:2.8.4" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:kernel:7.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:io:7.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:layout:7.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:forms:7.0.2" level="project" />
@@ -55,5 +54,8 @@
     <orderEntry type="library" name="Maven: com.itextpdf:barcodes:7.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:font-asian:7.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:hyph:7.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
   </component>
 </module>

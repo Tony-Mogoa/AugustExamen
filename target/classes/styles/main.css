@@ -158,6 +158,17 @@
 .nav-btn-left{
     -fx-graphic: url("../img/icons8-back-50.png");
 }
+
+.delete-btn{
+    -fx-padding:4;
+    -fx-border-width:1;
+    -fx-border-color:#f4f4f4;
+    -fx-border-radius:2;
+}
+.delete-btn:hover{
+    -fx-border-color: #ef0022;
+}
+
 .progress-bar > .track {
     -fx-background-insets:0;
     -fx-padding: 0;

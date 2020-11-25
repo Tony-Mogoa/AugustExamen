@@ -31,6 +31,7 @@ public class BluetoothServer extends Thread{
     private Button btnLeft;
     private Button btnRight;
     private Label lblConnecting;
+    private ProgressIndicator progressIndicator;
 
     @Override
     public void run() {
@@ -45,7 +46,7 @@ public class BluetoothServer extends Thread{
         }
     }
 
-    public BluetoothServer(ProgressBar progressBar, ImageView imageView, Label lblImgCount, ImageSlider imageSlider, Button btnLeft, Button btnRight, Label lblConnecting){
+    public BluetoothServer(ProgressBar progressBar, ImageView imageView, Label lblImgCount, ImageSlider imageSlider, Button btnLeft, Button btnRight, Label lblConnecting, ProgressIndicator progressIndicator){
         this.progressBar = progressBar;
         this.imageView = imageView;
         this.lblImgCount = lblImgCount;
@@ -53,6 +54,7 @@ public class BluetoothServer extends Thread{
         this.btnLeft = btnLeft;
         this.btnRight = btnRight;
         this.lblConnecting = lblConnecting;
+        this.progressIndicator = progressIndicator;
     }
 
     public void setQuestion(Question question){
@@ -69,7 +71,6 @@ public class BluetoothServer extends Thread{
     private void createConnection(){
         try {
             scn = (StreamConnectionNotifier) Connector.open(connURL);
-            //System.out.println("Waiting for connection");
             while(true){
                 System.out.println("Waiting for connection");
                 StreamConnection sc = scn.acceptAndOpen();
@@ -82,6 +83,7 @@ public class BluetoothServer extends Thread{
                 }
                 btClientSession.start();
                 lblConnecting.setVisible(false);
+                progressIndicator.setVisible(false);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,7 +92,8 @@ public class BluetoothServer extends Thread{
 
     public void setImageSlider(ImageSlider imageSlider) {
         this.imageSlider = imageSlider;
-        btClientSession.setImageSlider(imageSlider);
+        if(btClientSession != null)
+            btClientSession.setImageSlider(imageSlider);
     }
 
     public void setDeviceName(String deviceName){

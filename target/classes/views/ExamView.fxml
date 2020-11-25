@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,7 +35,7 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="Export">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Export PDF" />
+                      <MenuItem fx:id="miExportPdf" mnemonicParsing="false" text="Export PDF" />
                     </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="About" />
@@ -63,16 +64,12 @@
          <content>
             <VBox fx:id="viewVbox" spacing="10.0">
                <children>
-                  <VBox spacing="10.0" style="-fx-background-color: #fff;" styleClass="border-around" stylesheets="@../styles/main.css">
+                  <VBox spacing="10.0" stylesheets="@../styles/main.css">
                      <children>
-                        <Label fx:id="lblLabel" styleClass="border-around" stylesheets="@../styles/main.css" text="1(a)">
+                        <Label fx:id="lblLabel" styleClass="border-around" stylesheets="@../styles/main.css" text="1(a)" />
+                        <Label fx:id="lblContent" lineSpacing="1.0" text="Label" wrapText="true">
                            <font>
-                              <Font name="Segoe UI Semibold" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblContent" text="Label" wrapText="true">
-                           <font>
-                              <Font name="Liberation Sans" size="15.0" />
+                              <Font name="Ubuntu" size="13.0" />
                            </font>
                         </Label>
                      </children>
@@ -95,6 +92,15 @@
                                  <children>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="513.0" spacing="5.0">
                                        <children>
+                                          <StackPane styleClass="delete-btn">
+                                             <children>
+                                                <ImageView fx:id="imgDelete" fitHeight="13.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../img/icons8-delete-24.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </StackPane>
                                           <Label fx:id="txtCurrentImage" alignment="CENTER" textFill="#8a7878" />
                                           <Label fx:id="lblImgCount" alignment="CENTER" text="0 images" textFill="#9a7f7f" />
                                        </children>
@@ -149,6 +155,7 @@
             </Label>
             <Label fx:id="lblDevice" layoutX="51.0" layoutY="4.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="4.0" />
             <Label fx:id="lblConnecting" layoutX="828.0" layoutY="5.0" text="Waiting for connection..." AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="5.0" />
+            <ProgressIndicator fx:id="progressIndicator" layoutX="677.0" layoutY="2.0" prefHeight="22.0" prefWidth="23.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="2.0" />
          </children></AnchorPane>
    </bottom>
 </BorderPane>

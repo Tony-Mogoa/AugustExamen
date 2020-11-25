@@ -4,6 +4,7 @@ import august.examen.models.ImageSlider;
 import august.examen.models.Question;
 import august.examen.utils.BluetoothServer;
 import august.examen.utils.BluetoothStateUpdater;
+import august.examen.utils.PdfExporter;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.apache.log4j.BasicConfigurator;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -30,6 +33,9 @@ public class ExamViewController {
     public Button btnRight;
     public Label txtCurrentImage;
     public Label lblConnecting;
+    public MenuItem miExportPdf;
+    public ImageView imgDelete;
+    public ProgressIndicator progressIndicator;
     private ImageSlider imageSlider;
     private Vector<Question> questions;
     private Parent clickedLink = null;
@@ -38,6 +44,7 @@ public class ExamViewController {
     private Question clickedQuestion;
 
     public void init(Vector<Question> questions){
+        BasicConfigurator.configure();
         this.questions =questions;
         lblLabel.setText(questions.get(0).getLabel());
         lblContent.setText(questions.get(0).getContent());
@@ -93,7 +100,7 @@ public class ExamViewController {
         firstQuestion.getStyleClass().remove("question-link");
         int imgCount = clickedQuestion.getPhotosAttached().size();
         initImageSlider();
-        bluetoothServer = new BluetoothServer(progressBar, imageView, lblImgCount, imageSlider, btnLeft, btnRight, lblConnecting) {
+        bluetoothServer = new BluetoothServer(progressBar, imageView, lblImgCount, imageSlider, btnLeft, btnRight, lblConnecting, progressIndicator) {
             @Override
             public void setDeviceName(String deviceName) {
                 Platform.runLater(() -> lblDevice.setText(deviceName));
@@ -139,6 +146,16 @@ public class ExamViewController {
         };
         bluetoothStateUpdater.setDaemon(true);
         bluetoothStateUpdater.start();
+
+        miExportPdf.setOnAction(e -> {
+            Stage stage = (Stage) vbxQuestionLinks.getScene().getWindow();
+            PdfExporter pdfExporter = new PdfExporter(stage);
+            for(Question question: questions){
+                pdfExporter.addImages(question.getPhotosAttached());
+            }
+            pdfExporter.publish();
+        });
+        setDeleteImgBtnClickListener();
     }
 
     private void initImageSlider(){
@@ -202,5 +219,39 @@ public class ExamViewController {
             }
             //System.out.println("current image: " + currentImage);
         });
+    }
+
+    private void setDeleteImgBtnClickListener(){
+        imgDelete.setOnMouseClicked(e -> {
+            if(clickedQuestion.getPhotosAttached().size() > 0) {
+                clickedQuestion.getPhotosAttached().remove(imageSlider.getCurrentImage());
+                String txtImages = clickedQuestion.getPhotosAttached().size() == 1 ? "image" : "images";
+                lblImgCount.setText(clickedQuestion.getPhotosAttached().size() + " " + txtImages);
+                if (imageSlider.getCurrentImage() == clickedQuestion.getPhotosAttached().size()) {
+                    if (imageSlider.getCurrentImage() != 0) {
+                        imageSlider.decrement();
+                        setImage();
+                    } else {
+                        txtCurrentImage.setText("");
+                        imageView.imageProperty().set(null);
+                        btnLeft.setDisable(true);
+                        btnRight.setDisable(true);
+                    }
+                } else {
+                    setImage();
+                }
+
+                if (imageSlider.getCurrentImage() == 0)
+                    btnLeft.setDisable(true);
+
+                if (imageSlider.getCurrentImage() == clickedQuestion.getPhotosAttached().size() - 1)
+                    btnRight.setDisable(true);
+            }
+        });
+    }
+
+    private void setImage(){
+        Image image = new Image(clickedQuestion.getPhotosAttached().get(imageSlider.getCurrentImage()).toURI().toString());
+        imageView.setImage(image);
     }
 }
