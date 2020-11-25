@@ -1,3 +1,7 @@
+.root, *{
+    -fx-font-family: "Ubuntu";
+}
+
 .input{
 	-fx-background-radius: 2px;
 }
@@ -143,4 +147,33 @@
 .clicked{
     -fx-border-color: #15C39A;
     -fx-border-width: 2;
+}
+.nav-btn{
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+}
+.nav-btn-right{
+    -fx-graphic: url("../img/icons8-more-than-50.png");
+}
+.nav-btn-left{
+    -fx-graphic: url("../img/icons8-back-50.png");
+}
+
+.delete-btn{
+    -fx-padding:4;
+    -fx-border-width:1;
+    -fx-border-color:#f4f4f4;
+    -fx-border-radius:2;
+}
+.delete-btn:hover{
+    -fx-border-color: #ef0022;
+}
+
+.progress-bar > .track {
+    -fx-background-insets:0;
+    -fx-padding: 0;
+    -fx-border-radius:0;
+    -fx-border-width:1;
+    -fx-border-color:#d9d9d9;
+    /*-fx-background-radius: 0.583em; *//* 7 */
 }
