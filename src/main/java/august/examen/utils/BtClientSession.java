@@ -1,6 +1,5 @@
 package august.examen.utils;
 
-import august.examen.models.ImageSlider;
 import august.examen.models.Question;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
@@ -11,9 +10,6 @@ import javafx.scene.image.ImageView;
 
 import javax.microedition.io.StreamConnection;
 import java.io.*;
-import java.net.Inet4Address;
-import java.rmi.server.RemoteObject;
-import java.rmi.server.RemoteRef;
 
 public class BtClientSession extends Thread{
     private StreamConnection sc;

@@ -1,6 +1,5 @@
 package august.examen.utils;
 
-import august.examen.models.ImageSlider;
 import august.examen.models.Question;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

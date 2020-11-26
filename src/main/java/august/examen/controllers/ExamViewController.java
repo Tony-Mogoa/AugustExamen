@@ -1,6 +1,6 @@
 package august.examen.controllers;
 
-import august.examen.models.ImageSlider;
+import august.examen.utils.ImageSlider;
 import august.examen.models.Question;
 import august.examen.utils.BluetoothServer;
 import august.examen.utils.BluetoothStateUpdater;
