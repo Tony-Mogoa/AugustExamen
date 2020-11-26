@@ -1,6 +1,6 @@
 package august.examen.controllers;
 
-import august.examen.models.ImageSlider;
+import august.examen.utils.ImageSlider;
 import august.examen.models.Question;
 import august.examen.utils.BluetoothServer;
 import august.examen.utils.BluetoothStateUpdater;
@@ -36,6 +36,7 @@ public class ExamViewController {
     public MenuItem miExportPdf;
     public ImageView imgDelete;
     public ProgressIndicator progressIndicator;
+    public Label lblTimerCountdown;
     private ImageSlider imageSlider;
     private Vector<Question> questions;
     private Parent clickedLink = null;

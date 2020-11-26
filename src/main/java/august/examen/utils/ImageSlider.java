@@ -1,4 +1,4 @@
-package august.examen.models;
+package august.examen.utils;
 
 
 import javafx.scene.control.Label;
