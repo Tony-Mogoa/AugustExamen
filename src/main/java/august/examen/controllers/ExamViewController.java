@@ -36,6 +36,7 @@ public class ExamViewController {
     public MenuItem miExportPdf;
     public ImageView imgDelete;
     public ProgressIndicator progressIndicator;
+    public Label lblTimerCountdown;
     private ImageSlider imageSlider;
     private Vector<Question> questions;
     private Parent clickedLink = null;

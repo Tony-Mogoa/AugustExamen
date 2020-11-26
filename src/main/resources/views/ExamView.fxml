@@ -156,6 +156,11 @@
             <Label fx:id="lblDevice" layoutX="51.0" layoutY="4.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="4.0" />
             <Label fx:id="lblConnecting" layoutX="828.0" layoutY="5.0" text="Waiting for connection..." AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="5.0" />
             <ProgressIndicator fx:id="progressIndicator" layoutX="677.0" layoutY="2.0" prefHeight="22.0" prefWidth="23.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="2.0" />
+            <Label fx:id="lblTimerCountdown" layoutX="402.0" layoutY="5.0" text="00:00:00" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="402.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font name="Ubuntu Medium" size="13.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </bottom>
 </BorderPane>
