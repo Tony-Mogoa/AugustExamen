@@ -3,6 +3,7 @@ package august.examen.controllers;
 import august.examen.utils.*;
 import august.examen.models.Question;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -13,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.log4j.BasicConfigurator;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Timer;
@@ -40,6 +40,7 @@ public class ExamViewController {
     public Label lblTimerCountdown;
     public Group group;
     public Button btnCrop;
+    public Button btnLogout;
     private ImageSlider imageSlider;
     private Vector<Question> questions;
     private Parent clickedLink = null;
@@ -255,5 +256,9 @@ public class ExamViewController {
     private void setImage(){
         Image image = new Image(clickedQuestion.getPhotosAttached().get(imageSlider.getCurrentImage()).toURI().toString());
         imageView.setImage(image);
+    }
+
+    public void logout() {
+        Platform.exit();
     }
 }

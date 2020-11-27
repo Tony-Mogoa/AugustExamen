@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -14,14 +14,17 @@
             <Label fx:id="lblLabel" text="1(a)" />
          </children>
       </HBox>
-      <Label fx:id="lblContent" lineSpacing="1.0" prefHeight="25.0" prefWidth="178.0" text="This is a question">
-         <font>
-            <Font name="Segoe UI Semilight" size="12.0" />
-         </font>
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-      </Label>
-      <Pane prefHeight="74.0" prefWidth="178.0" style="-fx-background-color: #E5E5E5;" />
+      <ScrollPane fitToWidth="true" pannable="true" prefHeight="106.0" prefWidth="178.0">
+         <content>
+            <Label fx:id="lblContent" lineSpacing="1.0" maxWidth="1.7976931348623157E308" text="This is a question" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Semilight" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

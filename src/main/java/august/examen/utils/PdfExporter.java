@@ -11,6 +11,8 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -31,7 +33,7 @@ public class PdfExporter {
         else {
             PdfWriter writer = null;
             try {
-                writer = new PdfWriter(fileDestination + "/test.pdf");
+                writer = new PdfWriter(fileDestination + "/ExportedExam.pdf");
                 // Creating a PdfDocument
                 PdfDocument pdf = new PdfDocument(writer);
                 // Creating a Document
@@ -75,15 +77,15 @@ public class PdfExporter {
 
     public void publish(){
         try {
-//            Paragraph para = new Paragraph("THE END");
-////            para.setHorizontalAlignment(HorizontalAlignment.CENTER);
-////            para.setVerticalAlignment(VerticalAlignment.MIDDLE);
-////            para.setFontSize(30f);
-//            document.add(para);
             document.close();
             System.out.println("Published");
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("PDF successfully exported to the selected location.");
+                alert.show();
+            });
         }catch (PdfException e){
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

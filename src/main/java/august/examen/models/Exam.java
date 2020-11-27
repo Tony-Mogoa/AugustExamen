@@ -43,6 +43,10 @@ public class Exam {
         this.examId = uniqueKey.toString();
     }
 
+    public Exam(boolean cleanSlate){
+
+    }
+
     public Exam(DatabaseWrapper databaseWrapper, boolean empty){
         this.databaseWrapper = databaseWrapper;
     }
@@ -207,5 +211,9 @@ public class Exam {
 
     public void setExamId(String examId) {
         this.examId = examId;
+    }
+
+    public String formatTime(){
+        return hours + "h " + minutes + "min";
     }
 }
