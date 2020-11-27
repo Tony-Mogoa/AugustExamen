@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("/views/SearchExamView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/NewExam.fxml"));
         primaryStage.setTitle("August Examen");
         primaryStage.resizableProperty().setValue(Boolean.FALSE);
         AugustScene scene = new AugustScene(root);

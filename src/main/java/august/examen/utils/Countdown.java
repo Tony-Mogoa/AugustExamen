@@ -42,7 +42,6 @@ public class Countdown{
         String remSeconds = remainderSeconds < 10 ? "0" + remainderSeconds : Integer.toString(remainderSeconds);
         String remMinutes = minutes < 10 ? "0" + minutes : Integer.toString(minutes);
         String remHours = hours < 10 ? "0" + hours : Integer.toString(hours);
-        System.out.println(remHours + ":" + remMinutes + ":" + remSeconds);
         return remHours + ":" + remMinutes + ":" + remSeconds;
     }
 

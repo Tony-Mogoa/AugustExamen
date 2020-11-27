@@ -15,14 +15,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="august.examen.controllers.ExamViewController">
    <top>
-      <HBox style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+      <GridPane style="-fx-background-color: #fff;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <MenuBar style="-fx-background-color: #fff;">
               <menus>
@@ -42,8 +52,16 @@
                   <Menu mnemonicParsing="false" text="Help" />
               </menus>
             </MenuBar>
+            <Button mnemonicParsing="false" styleClass="btn-danger" stylesheets="@../styles/main.css" text="Log out" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </Button>
          </children>
-      </HBox>
+         <padding>
+            <Insets right="8.0" />
+         </padding>
+      </GridPane>
    </top>
    <left>
       <ScrollPane fitToWidth="true" pannable="true" prefHeight="351.0" prefWidth="215.0" stylesheets="@../styles/main.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
