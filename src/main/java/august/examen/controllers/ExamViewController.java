@@ -160,24 +160,6 @@ public class ExamViewController {
         });
     }
 
-  //Timer implemtation attempy
-    Timer timer;
-    void start(){
-        timer = new Timer(1000, new Countdown());
-    }
-    class Count extends Countdown implements ActionListenerr{
-
-        public Count(int seconds, Label lblTimeCountDown) {
-            super(seconds, lblTimeCountDown);
-
-            @Override
-                    (ActionEvent e)
-                    lblTimerCountdown.setText("" + seconds++);
-            if (seconds == 10)
-                timer.removeActionListener(this);
-        }
-    }
-
     private void initImageSlider(){
         int imgCount = clickedQuestion.getPhotosAttached().size();
         imageSlider = new ImageSlider(txtCurrentImage, imgCount);
