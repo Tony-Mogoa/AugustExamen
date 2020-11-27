@@ -36,23 +36,14 @@
          <children>
             <MenuBar style="-fx-background-color: #fff;">
               <menus>
-                <Menu mnemonicParsing="false" text="New Exam" />
-                <Menu mnemonicParsing="false" text="Connect">
-                  <items>
-                        <MenuItem fx:id="miConnectDevice" mnemonicParsing="false" text="Connect to device" />
-                    <MenuItem mnemonicParsing="false" text="Pair new device" />
-                  </items>
-                </Menu>
                   <Menu mnemonicParsing="false" text="Export">
                     <items>
                       <MenuItem fx:id="miExportPdf" mnemonicParsing="false" text="Export PDF" />
                     </items>
                   </Menu>
-                <Menu mnemonicParsing="false" text="About" />
-                  <Menu mnemonicParsing="false" text="Help" />
               </menus>
             </MenuBar>
-            <Button mnemonicParsing="false" styleClass="btn-danger" stylesheets="@../styles/main.css" text="Log out" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logout" styleClass="btn-danger" stylesheets="@../styles/main.css" text="Log out" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
