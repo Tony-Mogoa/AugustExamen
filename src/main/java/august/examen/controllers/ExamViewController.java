@@ -1,10 +1,7 @@
 package august.examen.controllers;
 
-import august.examen.utils.ImageSlider;
+import august.examen.utils.*;
 import august.examen.models.Question;
-import august.examen.utils.BluetoothServer;
-import august.examen.utils.BluetoothStateUpdater;
-import august.examen.utils.PdfExporter;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +12,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.log4j.BasicConfigurator;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Timer;
 import java.util.Vector;
 
 public class ExamViewController {
@@ -144,6 +144,7 @@ public class ExamViewController {
                     bluetoothOn = false;
                 }
             }
+
         };
         bluetoothStateUpdater.setDaemon(true);
         bluetoothStateUpdater.start();
@@ -157,6 +158,24 @@ public class ExamViewController {
             pdfExporter.publish();
         });
         setDeleteImgBtnClickListener();
+    }
+
+  //Timer implemtation attempy
+    Timer timer;
+    void start(){
+        timer = new Timer(1000, new Countdown());
+    }
+    class Count extends Countdown implements ActionListenerr{
+
+        public Count(int seconds, Label lblTimeCountDown) {
+            super(seconds, lblTimeCountDown);
+
+            @Override
+                    (ActionEvent e)
+                    lblTimerCountdown.setText("" + seconds++);
+            if (seconds == 10)
+                timer.removeActionListener(this);
+        }
     }
 
     private void initImageSlider(){
