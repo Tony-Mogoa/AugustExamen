@@ -13,7 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.log4j.BasicConfigurator;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Timer;
 import java.util.Vector;
 
 public class ExamViewController {
@@ -132,6 +135,7 @@ public class ExamViewController {
                     bluetoothOn = false;
                 }
             }
+
         };
         bluetoothStateUpdater.setDaemon(true);
         bluetoothStateUpdater.start();
@@ -154,6 +158,24 @@ public class ExamViewController {
                 ImageCropper imageCropper = new ImageCropper(imageView, clickedQuestion.getPhotosAttached().get(imageSlider.getCurrentImage()).getAbsolutePath());
             }
         });
+    }
+
+  //Timer implemtation attempy
+    Timer timer;
+    void start(){
+        timer = new Timer(1000, new Countdown());
+    }
+    class Count extends Countdown implements ActionListenerr{
+
+        public Count(int seconds, Label lblTimeCountDown) {
+            super(seconds, lblTimeCountDown);
+
+            @Override
+                    (ActionEvent e)
+                    lblTimerCountdown.setText("" + seconds++);
+            if (seconds == 10)
+                timer.removeActionListener(this);
+        }
     }
 
     private void initImageSlider(){
