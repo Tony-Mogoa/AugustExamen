@@ -92,6 +92,11 @@
                                  <children>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="513.0" spacing="5.0">
                                        <children>
+                                          <Button fx:id="btnCrop" mnemonicParsing="false" prefHeight="16.0" prefWidth="50.0" text="Crop">
+                                             <font>
+                                                <Font size="12.0" />
+                                             </font>
+                                          </Button>
                                           <StackPane styleClass="delete-btn">
                                              <children>
                                                 <ImageView fx:id="imgDelete" fitHeight="13.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -105,16 +110,16 @@
                                           <Label fx:id="lblImgCount" alignment="CENTER" text="0 images" textFill="#9a7f7f" />
                                        </children>
                                        <padding>
-                                          <Insets right="8.0" />
+                                          <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
                                        </padding>
                                     </HBox>
                                     <StackPane prefHeight="280.0" prefWidth="517.0">
                                        <children>
-                                          <ImageView fx:id="imageView" fitWidth="500" preserveRatio="true">
-                                             <viewport>
-                                                <Rectangle2D />
-                                             </viewport>
-                                          </ImageView>
+                                                <ImageView fx:id="imageView" fitWidth="500" preserveRatio="true">
+                                                   <viewport>
+                                                      <Rectangle2D />
+                                                   </viewport>
+                                                </ImageView>
                                        </children>
                                     </StackPane>
                                  </children>
@@ -159,6 +164,11 @@
             <Label fx:id="lblTimerCountdown" layoutX="402.0" layoutY="5.0" text="00:00:00" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="402.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="5.0">
                <font>
                   <Font name="Ubuntu Medium" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="366.0" layoutY="5.0" text="Time:">
+               <font>
+                  <Font name="Ubuntu" size="13.0" />
                </font>
             </Label>
          </children></AnchorPane>

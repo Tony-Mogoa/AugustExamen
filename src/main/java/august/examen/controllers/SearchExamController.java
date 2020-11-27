@@ -61,7 +61,7 @@ public class SearchExamController implements Initializable {
                 Parent root = loader.load();
                 //getting the controller of the main ui file
                 ExamViewController examViewController = loader.getController();
-                examViewController.init(questions);
+                examViewController.init(questions, stage);
                 AugustScene scene = new AugustScene(root);
                 stage.setScene(scene);
                 stage.setTitle("August Examen");

@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Countdown extends Thread{
+public class Countdown{
     private Timer timer;
     private int seconds;//duration in seconds
     private Label lblTimeCountdown;
@@ -15,13 +15,14 @@ public class Countdown extends Thread{
         this.seconds = seconds;
         timer = new Timer();
         this.lblTimeCountdown = lblTimeCountDown;
+        startCountdown();
     }
 
-    @Override
-    public void run() {
+    public void startCountdown() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 Platform.runLater(() -> lblTimeCountdown.setText(formatTime()));
+                seconds--;
                 if (seconds < 0) {
                     timer.cancel();
                     Platform.runLater(() -> lblTimeCountdown.setText("Time is up"));
@@ -41,6 +42,11 @@ public class Countdown extends Thread{
         String remSeconds = remainderSeconds < 10 ? "0" + remainderSeconds : Integer.toString(remainderSeconds);
         String remMinutes = minutes < 10 ? "0" + minutes : Integer.toString(minutes);
         String remHours = hours < 10 ? "0" + hours : Integer.toString(hours);
+        System.out.println(remHours + ":" + remMinutes + ":" + remSeconds);
         return remHours + ":" + remMinutes + ":" + remSeconds;
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 }

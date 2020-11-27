@@ -1,12 +1,10 @@
 package august.examen.controllers;
 
-import august.examen.utils.ImageSlider;
+import august.examen.utils.*;
 import august.examen.models.Question;
-import august.examen.utils.BluetoothServer;
-import august.examen.utils.BluetoothStateUpdater;
-import august.examen.utils.PdfExporter;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -37,6 +35,8 @@ public class ExamViewController {
     public ImageView imgDelete;
     public ProgressIndicator progressIndicator;
     public Label lblTimerCountdown;
+    public Group group;
+    public Button btnCrop;
     private ImageSlider imageSlider;
     private Vector<Question> questions;
     private Parent clickedLink = null;
@@ -44,8 +44,9 @@ public class ExamViewController {
     private BluetoothServer bluetoothServer;
     private Question clickedQuestion;
 
-    public void init(Vector<Question> questions){
+    public void init(Vector<Question> questions, Stage stage){
         BasicConfigurator.configure();
+        Countdown countdown = new Countdown(7200, lblTimerCountdown);
         this.questions =questions;
         lblLabel.setText(questions.get(0).getLabel());
         lblContent.setText(questions.get(0).getContent());
@@ -81,19 +82,6 @@ public class ExamViewController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//            miConnectDevice.setOnAction(e ->{
-//                if(bluetoothServer == null) {
-//                    bluetoothServer = new BluetoothServer(progressBar, imageView, lblImgCount, imageSlider, btnLeft, btnRight) {
-//                        @Override
-//                        public void setDeviceName(String deviceName) {
-//                            Platform.runLater(() -> lblDevice.setText(deviceName));
-//                        }
-//                    };
-//                    bluetoothServer.setQuestion(this.clickedQuestion);
-//                    bluetoothServer.setDaemon(true);
-//                    bluetoothServer.start();
-//                }
-//            });
         }
         Parent firstQuestion  = (Parent)vbxQuestionLinks.getChildren().get(0);
         clickedLink = firstQuestion;
@@ -149,7 +137,7 @@ public class ExamViewController {
         bluetoothStateUpdater.start();
 
         miExportPdf.setOnAction(e -> {
-            Stage stage = (Stage) vbxQuestionLinks.getScene().getWindow();
+            //Stage stage = (Stage) vbxQuestionLinks.getScene().getWindow();
             PdfExporter pdfExporter = new PdfExporter(stage);
             for(Question question: questions){
                 pdfExporter.addImages(question.getPhotosAttached());
@@ -157,6 +145,15 @@ public class ExamViewController {
             pdfExporter.publish();
         });
         setDeleteImgBtnClickListener();
+        stage.setOnHiding( event -> {
+            countdown.getTimer().cancel();
+        });
+
+        btnCrop.setOnAction(e -> {
+            if(clickedQuestion.getPhotosAttached().size() > 0) {
+                ImageCropper imageCropper = new ImageCropper(imageView, clickedQuestion.getPhotosAttached().get(imageSlider.getCurrentImage()).getAbsolutePath());
+            }
+        });
     }
 
     private void initImageSlider(){
