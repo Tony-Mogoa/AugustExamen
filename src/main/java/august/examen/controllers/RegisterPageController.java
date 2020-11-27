@@ -13,7 +13,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
-public class RegisterPageController implements Initializable, ActionListener {
+public class RegisterPageController implements Initializable{
     public ChoiceBox<String> choicebox;
     public TextField first_name;
     public TextField mid_name;
@@ -28,11 +28,6 @@ public class RegisterPageController implements Initializable, ActionListener {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choicebox.getItems().addAll("Student","Lecturer");
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        registermethod();
     }
 
     public void registermethod(){
@@ -55,9 +50,10 @@ public class RegisterPageController implements Initializable, ActionListener {
             catch (Exception e){
                 e.printStackTrace();
             }
-        }
+    }
 
     public void registerMethod(javafx.event.ActionEvent actionEvent) {
+        registermethod();
         Stage currentStage = (Stage) registerbutton.getScene().getWindow();
         currentStage.hide();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainPage.fxml"));
